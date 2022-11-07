@@ -1,16 +1,21 @@
 import ContactsList from './ContactsList/ContactsList';
 import Form from './Form/Form';
 import Filter from './Filter/Filter';
+import {
+  Section,
+  SectionTitlePrimary,
+  SectionTitleSecondary,
+} from './App.styled';
 
 export function App() {
   return (
-    <div>
-      <h1>Phonebook</h1>
+    <Section>
+      <SectionTitlePrimary>Phonebook</SectionTitlePrimary>
       <Form />
 
-      <h2>Contacts</h2>
+      <SectionTitleSecondary>Contacts</SectionTitleSecondary>
       <Filter />
       <ContactsList />
-    </div>
+    </Section>
   );
 }

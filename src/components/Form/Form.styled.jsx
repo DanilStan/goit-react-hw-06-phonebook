@@ -7,13 +7,18 @@ export const FormSlyled = styled.form`
 `;
 
 export const Label = styled.label`
-  color: #2a6b84;
+  color: white;
   font-weight: 700;
 `;
 
 export const Button = styled.button`
-  background-color: #2a6b84;
-  color: white;
+  background-color: white;
+  color: black;
   border: 1px solid transparent;
   border-radius: 4px;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
 `;
