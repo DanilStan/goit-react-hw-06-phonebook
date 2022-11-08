@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { FormSlyled, Label, Button } from './Form.styled';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/ContactList/slice.contactList';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Form() {
   const dispatch = useDispatch();
 
+  const { contacts } = useSelector(state => state.contacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -24,8 +26,26 @@ function Form() {
     }
   };
 
+  // const checkUniqContactName = name => {
+  //   const isIncludes = contacts.find(
+  //     contact => contact.name.toLowerCase() === name.toLowerCase()
+  //   );
+  //   return isIncludes;
+  // };
+
+  const checkUniqName = name => {
+    const isIncludes = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    return isIncludes;
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
+
+    if (checkUniqName(name)) {
+      return alert(`${name} is already in contacts`);
+    }
 
     dispatch(addContact({ name, number }));
 
